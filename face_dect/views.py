@@ -48,3 +48,8 @@ def getHistory(request):
 
 def chat(request):
     return render(request, 'chat.html')
+
+
+def music_playlist(request):
+    return render(request, 'music_playlist.html')
+
