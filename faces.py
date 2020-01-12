@@ -8,6 +8,7 @@ def detect_faces(path):
         content = image_file.read()
 
     image = vision.types.Image(content=content)
+    print(image)
 
     response = client.face_detection(image=image)
     faces = response.face_annotations
@@ -16,6 +17,8 @@ def detect_faces(path):
     likelihood_name = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
                        'LIKELY', 'VERY_LIKELY')
     print('Faces:')
+
+    print(type(faces))
 
     for face in faces:
         print('anger: {}'.format(likelihood_name[face.anger_likelihood]))
@@ -26,3 +29,7 @@ def detect_faces(path):
                     for vertex in face.bounding_poly.vertices])
 
         print('face bounds: {}'.format(','.join(vertices)))
+
+
+
+detect_faces("resources/isHappy.jpg")
