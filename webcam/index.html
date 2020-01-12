@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chill Calm</title>
+
+    <style>
+      #container {
+        margin: 0px auto;
+        width: 500px;
+        height: 375px;
+        border: 10px #333 solid;
+      }
+      #videoElement {
+        width: 500px;
+        height: 375px;
+        background-color: #666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <center>
+      <div id="container">
+        <video autoplay="true" id="videoElement"></video>
+      </div>
+      <canvas>
+        <div class="output">
+          <img id="photo" alt="The screen capture will appear in this box." />
+        </div>
+      </canvas>
+      <button id="startbutton">Take photo</button>
+    </center>
+    <script src="webcam.js"></script>
+  </body>
+</html>
