@@ -5,12 +5,14 @@ from django.core.files.base import ContentFile
 from django.shortcuts import render
 from google.cloud import vision
 from face_dect.models import history
+from cgi import *
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
 
 def info(request):
+    #print(parse(request))
     #vision api code which also saves data to db.
     vision_client = vision.ImageAnnotatorClient()
     myfile = request.FILES["pic"]
