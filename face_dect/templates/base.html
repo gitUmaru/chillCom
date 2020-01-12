@@ -92,7 +92,7 @@
      }
      else if (userinput != '') {
    var usr = 'YOU:   ' + userinput;
-   var rpl ='ELIZA: ' + eliza.transform(userinput);
+   var rpl ='ChillBOT: ' + eliza.transform(userinput);
    elizaLines.push(usr);
    elizaLines.push(rpl);
    // display nicely
@@ -109,7 +109,7 @@
      }
      else if (elizaLines.length == 0) {
    // no input and no saved lines -> output initial
-   var initial = 'ELIZA: ' + eliza.getInitial();
+   var initial = 'ChillBOT: ' + eliza.getInitial();
    elizaLines.push(initial);
    f.e_display.value = initial + '\n';
      }
@@ -124,10 +124,10 @@
   <h1>Welcome To Chill Com</h1>
   <nav class="navbar">
   	<ul class="nav">
-  		<li><a href="index.html">Home</a></li>
-  		<li><a href="info.html">Info</a></li>
-      <li><a href="chat.html">Chat</a></li>
-  		<li><a href="training.html">Still Not Mood</a></li>
+  		<li><a href="#">Home</a></li>
+  		<li><a href="">Results</a></li>
+      <li><a href="">Chat</a></li>
+  		<li><a href="">History</a></li>
   		<li><a href="contact.html">Also Mood</a></li>
   	</ul>
   </nav>
