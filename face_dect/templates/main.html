@@ -3,20 +3,23 @@
 {% block content %}
 <body id="mainBody">
   <div id="landingBox">
-    <img class="hvr-grow" id="landingpic" src=https://dummyimage.com/1079x355/b5b5b5.jpg> </div> <div id="box">
+    <a href="{% url 'animation' %}"><img class="hvr-grow" style="border-radius: 15px;" id="landingpic"
+    src="{% static "img/Untitled-1.jpg"%}"> </a></div> <div id="box">
     <div id="label">
-      jhlkj
+      <br>
       <div id="animation">
-        <img class="hvr-grow" id="anxiouspic" src=https://dummyimage.com/330x220/000/fff> <img class="hvr-grow" id="anxiouspic" src=https://dummyimage.com/330x220/000/fff> <img class="hvr-grow" id="anxiouspic" src=https://dummyimage.com/330x220/000/fff> </div> </div> </div> <div id="box">
+        <a href="{% url 'index' %}"><img class="hvr-grow" id="anxiouspic" src="{% static "img/pic1.jpg"%}"></a>
+        <a href="{% url 'chat' %}"><img class="hvr-grow" id="anxiouspic" src="{% static "img/pic2.jpg"%}"></a>
+        <a href="{% url 'music_playlist' %}"><img class="hvr-grow" id="anxiouspic" src="{% static "img/pic3.jpg"%}" </a></div> </div> </div> <div id="box">
         <div id="label">
-          jhlkj
+          <br>
           <div id="animation">
-            <img class="hvr-grow" id="talkpic" src=https://dummyimage.com/1040x220/000/fff href="animation.html"> </div>
+            <img class="hvr-grow" id="talkpic" src="{% static "img/pic4.jpg"%}"> </div>
         </div>
       </div>
       <div id="box">
         <div id="label">
-          jhlkj
+          <br>
           <div id="animation">
             <img class="hvr-grow" id="talkpic" src=https://dummyimage.com/1040x220/000/fff> </div> </div> </div> <div id="quotesContainer">
           </div>
