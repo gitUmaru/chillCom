@@ -5,6 +5,10 @@ from django.core.files.base import ContentFile
 from django.shortcuts import render
 from google.cloud import vision
 from face_dect.models import history
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import base64
+from io import BytesIO
+from django.utils.http import urlsafe_base64_decode
 
 # Create your views here.
 def index(request):
@@ -13,17 +17,15 @@ def index(request):
 def info(request):
     #vision api code which also saves data to db.
     vision_client = vision.ImageAnnotatorClient()
-    myfile = request.FILES["pic"]
-    fs = FileSystemStorage()
-    filename = fs.save(myfile.name, myfile)
-    file_name = fs.url(filename)
-    with io.open(file_name, "rb") as image_file:
-        content = image_file.read()
-    image = vision.types.Image(content=content)
-    #labels = image.detect_labels()
-    #label_data=""
+
+    pic = request.POST["pic"]
+    format, imgstr = pic.split(';base64,')
+    myfile = base64.b64decode(imgstr)
+    imageFile = BytesIO(myfile)
+
+    image = vision.types.Image(content=imageFile.read())
     response = vision_client.face_detection(image=image)
-    labels = response.face_annotations
+    labels = response.face_annotationsx
     likelihood_name = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
                        'LIKELY', 'VERY_LIKELY')
     label_data = ''
@@ -37,29 +39,14 @@ def info(request):
                     for vertex in label.bounding_poly.vertices])
 
         print('face bounds: {}'.format(','.join(vertices)))
-    record=history(url=file_name,data=label_data)
-    record.save()
-    return render(request,'results.html',{"labels":labels,'image':file_name})
+    #record=history(url=file_name,data=label_data)
+    #record.save()
+    return render(request,'results.html',{"labels":labels,'image':imageFile})
 
 def getHistory(request):
     #Getting history from db.
     previous_searches=history.objects.all()
     return render(request,'history.html',{"data":previous_searches})
 
-def animation(request):
-    return render(request, 'animation.html')
-
-def main(request):
-    return render(request, 'main.html')
-
-def option(request):
-    return render(request, 'option.html')
-
 def chat(request):
     return render(request, 'chat.html')
-
-def welcome(request):
-    return render(request, 'welcome.html')
-
-def music_playlist(request):
-    return render(request, 'music_playlist.html')
