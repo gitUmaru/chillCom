@@ -1,4 +1,4 @@
-# Chill_Com
+# Chill Calm
 
 This project was a group effort, the product itself is a very soft means of anxiety therapy, it detects you emotions based off of Google's Vision API and generated animation that will calm you accordingly. It also has text input as well as overall generally relaxing UX.
 
