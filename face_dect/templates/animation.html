@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Calm YoSelf</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="main.css">
+  <link href="css/hover-min.css" rel="stylesheet">
+  <link rel="stylesheet" href="animation.css">
+  <link rel="stylesheet" href="animate.min.css">
+  <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: orange;!important; font-size: 18pt;">
+    <a class="navbar-brand text-light" href="main.html">
+      <img src="ellie.png" width="70" height="70" class="d-inline-block align-top" alt="">
+      <p id = "name"  class="d-inline-block align-top">Chill Calm</p>
+    </a>
+  </nav>
+
+  <div id="breathe">Breathe</div>
+  <div id="animation">
+      <img src="{% static 'img/first_circle.png' %}" class="logo" id = "first"/>
+      <img src="{% static 'img/second_circle.png' %}" class="logo" id="second"/>
+      <img src="{% static 'img/third_circle.png' %}" class="logo" id="third"/>
+    </div>
+
+    {% block content %}{% endblock content %}
+</body>
+</html>
