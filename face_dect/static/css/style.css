@@ -2,11 +2,13 @@
   background: #ccc;
   overflow: hidden;
 }
+
 .navbar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .navbar li a {
   float: left;
   line-height: 50px;
@@ -14,11 +16,348 @@
   text-decoration: none;
   color: #333;
 }
+
 .navbar li a:hover {
   background-color: #999;
   color: #fff;
 }
 
 body {
-  background-color: rgba(112,112,112,0.5);
+  background-color: rgba(112, 112, 112, 0.5);
+}
+
+/* animation.html css */
+@keyframes rotateAnim {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes resizeAnim {
+  0% {
+    width: 70px;
+  }
+
+  30% {
+    width: 110px;
+  }
+
+  100% {
+    width: 70px;
+  }
+}
+
+.logo {
+  animation: rotateAnim 18s infinite, resizeAnim 8s infinite;
+}
+
+#first {
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  z-index: 10000;
+}
+
+#second {
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  z-index: 9000;
+}
+
+#third {
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  z-index: 8000;
+}
+
+@keyframes colorAnim {
+  0% {
+    color: white;
+  }
+
+  25% {
+    color: grey;
+  }
+
+  50% {
+    color: white;
+  }
+
+  75% {
+    color: grey;
+  }
+
+  100% {
+    color: white;
+  }
+}
+
+#breathe {
+  position: absolute;
+  left: 44%;
+  top: 30%;
+  width: 100px;
+  height: 100px;
+  font-size: 70px;
+  animation: colorAnim 19.5s infinite;
+}
+
+/* welcome.html css */
+
+#welcomeBody {
+  background-color: #faf8f2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+
+
+  font-family: 'Lato', sans-serif !important;
+}
+
+#name {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+#logIn {
+  background-color: #236e8a;
+  display: inline;
+  padding: 1em 1.5em;
+  border-radius: 10%
+}
+
+#logInButton {
+  color: white;
+  text-decoration: none;
+}
+
+#logIn:hover {
+  box-shadow: 0px 0px 4px 0px white;
+}
+
+.navbar {
+  width: 100vw;
+}
+#midbar {
+  text-align: center;
+  margin-top: 150px;
+}
+
+#midbar>p {
+  text-align: center;
+  font-size: 50pt;
+  color: white;
+  text-shadow: 0px 0px 4px black;
+  margin-bottom: 50px;
+}
+
+/* main.html css */
+
+#mainBody {
+
+/*  font-family: 'Lato', sans-serif !important;*/
+  height: 100vh;
+  background-image: url(../images/index-bg.jpg);
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+#or {
+  margin: 10%;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 0px 4px black;
+}
+# {
+  margin-top: 30px;
+  background-color: red;
+  height: 20pt;
+
+}
+
+#landingpic {
+  padding-top: 20px;
+  width: 80%;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#box{
+/*  background-color: green;*/
+  height: 25%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom:5%;
+}
+
+#label {
+/*  background-color: aqua;*/
+}
+
+#animation{
+  text-align: center;
+}
+
+#name {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+#anxiouspic{
+  height: 30%;
+  border-radius: 5%;
+  margin : 0 10px 20px 10px;
+}
+
+#talkpic{
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#quotesContainer {
+  margin-top: 250px;
+}
+div.quotes {
+  text-align: center;
+}
+img.quotes {
+  width: 100%;
+  box-shadow: 0px 0px 4px 0px black;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  #welcome {
+    font-size: 70pt;
+    text-align: center;
+  }
+  
+  #search {
+    width: 50%;
+  }
+
+  #or {
+    margin: 5%;
+  }
+  
+  #landingpic {
+    width: 70%;
+}
+  
+  /* option.html css */
+  
+  #optionBody {
+
+/*  font-family: 'Lato', sans-serif !important;*/
+  height: 100vh;
+  background-image: url(../images/index-bg.jpg);
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+#welcome {
+  text-align: center;
+  color: white;
+  text-shadow: 0px 0px 4px black;
+  letter-spacing: 0.01em;
+  margin-top: 50px;
+  
+}
+
+#search {
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 4px 0x #48b574;
+}
+#name {
+  color: white;
+  font-size: 16pt;
+  text-align: center;
+  text-shadow: 0px 0px 4px black;
+}
+#or {
+  margin: 10%;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 0px 4px black;
+}
+#anxiousButton {
+  text-align: center;
+  margin-top: 60px;
+  background-color: ;
+
+}
+#anxious {
+  color: white;
+  background-color: skyblue;
+  padding: 1em 1.5em;
+  font-size: 16pt;
+  box-shadow: 0px 0px 4px 0px black;
+}
+#quotesContainer {
+  margin-top: 250px;
+}
+div.quotes {
+  text-align: center;
+}
+img.quotes {
+  width: 100%;
+  box-shadow: 0px 0px 4px 0px black;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  #welcome {
+    font-size: 70pt;
+    text-align: center;
+  }
+  #name {
+    font-size: 50pt;
+  }
+  #search {
+    width: 50%;
+  }
+
+  #or {
+    margin: 5%;
+  }
 }
