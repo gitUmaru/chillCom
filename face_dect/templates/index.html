@@ -36,8 +36,13 @@
     </div>
   </div>
 </div>
+<audio id="sounds">
+  <source src="{% static 'music/camera.ogg' %}">
+</audio>
 </body>
     <script>
+      const camera_snap = document.getElementById("sounds")
+
       function brown(){
         document.getElementById("bgm").src = "{% static 'music/brown.ogg' %}";
       }function black(){
@@ -48,6 +53,13 @@
       }
       function no_music(){
         document.getElementById("bgm").src = "";
+      }
+
+      function play_chill_bot_music(){
+        document.getElementById("bgm").src = "{% static 'music/ocarina.ogg' %}";
+      }
+      function play_breathing_music(){
+        document.getElementById("bgm").src = "{% static 'music/breathing.ogg' %}";
       }
 
 
@@ -69,6 +81,9 @@
       }
 
       function takepicture() {
+        var btn = document.createElement("AUDIO");
+        btn.src = "{% static 'music/camera.ogg' %}";
+        btn.play();
         (video = document.querySelector("#videoElement")),
           (image = document.getElementById("dl-btn")),
           (width = video.videoWidth / 3),
