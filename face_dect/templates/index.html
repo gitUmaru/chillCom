@@ -10,4 +10,55 @@
         <input type='submit' class="button">
     </form>
     <button type="button" onclick="location.href='/analyze/history'" class="button">History</button>
+</button>
+<div id="container">
+  <video autoplay="true" id="videoElement"></video>
+</div>
+<canvas>
+  <div class="output">
+    <img style="padding-top: 70px;" id="photo" height="50" width="20" />
+  </div>
+</canvas>
+<div>
+  <button id="startbutton">Take photo</button>
+</div>
+<script>
+var hidden_canvas = document.querySelector("canvas");
+var video = document.querySelector("#videoElement");
+var takepicture_button = document.getElementById("startbutton");
+takepicture_button.addEventListener("click", takepicture);
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then(function(stream) {
+      video.srcObject = stream;
+    })
+    .catch(function(err0r) {
+      console.log("Something went wrong!");
+    });
+}
+
+function takepicture() {
+  (video = document.querySelector("#videoElement")),
+    (image = document.getElementById("dl-btn")),
+    (width = video.videoWidth / 3),
+    (height = video.videoHeight / 3),
+    (context = hidden_canvas.getContext("2d"));
+  hidden_canvas.width = width;
+  hidden_canvas.height = height;
+  context.drawImage(video, 0, 0, width, height);
+  var c = document.querySelector("canvas");
+  var d = c.toDataURL("image/png");
+  saveBase64AsFile(d, "snapshot.png");
+}
+
+function saveBase64AsFile(base64, fileName) {
+  var link = document.createElement("a");
+  link.setAttribute("href", base64);
+  link.setAttribute("download", fileName);
+  link.click();
+}
+</script>
+
 {% endblock content %}
