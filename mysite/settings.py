@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # ADDED APPS #
     'bootstrap4',
+    'face_dect'
 ]
 
 MIDDLEWARE = [

@@ -53,9 +53,6 @@ function takepicture() {
   var c = document.querySelector("canvas");
   var d = c.toDataURL("image/png");
   saveBase64AsFile(d, "hello.png");
-  //document.write('<img src="' + d + '"/>');
-  //var w = window.open("about:blank", "image from canvas");
-  //w.document.write("<img src='" + d + "' alt='from canvas'/>");
 }
 
 function saveBase64AsFile(base64, fileName) {
