@@ -25,7 +25,7 @@ def info(request):
 
     image = vision.types.Image(content=imageFile.read())
     response = vision_client.face_detection(image=image)
-    labels = response.face_annotationsx
+    labels = response.face_annotations
     likelihood_name = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
                        'LIKELY', 'VERY_LIKELY')
     label_data = ''
@@ -48,5 +48,19 @@ def getHistory(request):
     previous_searches=history.objects.all()
     return render(request,'history.html',{"data":previous_searches})
 
+
 def chat(request):
     return render(request, 'chat.html')
+
+def main(request):
+    return render(request, 'main.html')
+    
+def animation(request):
+    return render(request, 'animation.html')
+    
+def welcome(request):
+    return render(request, 'welcome.html')
+    
+def music_playlist(request):
+    return render(request, 'music_playlist.html')
+
