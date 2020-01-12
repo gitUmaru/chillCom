@@ -13,14 +13,120 @@
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<style>
+ .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+ .panel-collapse-clickable {
+     cursor: pointer;
+ }
+</style>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="{% static 'js/elizabot.js' %}"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="{% static 'js/elizadata.js' %}"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript" SRC="{% static 'js/sentimood.js' %}"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+ var eliza = new ElizaBot();
+ var elizaLines = new Array();
+ var sentiment = new Sentimood();
+
+ var displayCols = 60;
+ var displayRows = 20;
+
+ var userSentiment = 0;
+
+ var imgs = {};
+ imgs[0] = "{% static 'img/default-01.png' %}";
+ imgs[1] = "{% static 'img/happy1-01.png' %}";
+ imgs[2] = "{% static 'img/happy2-01.png' %}";
+ imgs[3] = "{% static 'img/happy3-01.png' %}";
+ imgs[-1] = "{% static 'img/sad1-01.png' %}";
+ imgs[-2] = "{% static 'img/sad2-01.png' %}";
+ imgs[-3] = "{% static 'img/sad3-01.png' %}";
+
+ function updateImage(val) {
+     // If continuing on same sentiment
+     if(val * userSentiment >= 0) {
+   if(val < 0) {
+       userSentiment -= 1;
+   }
+   if(val > 0) {
+       userSentiment += 1;
+   }
+     }
+     else {
+   // switch moods
+   userSentiment = val
+     }
+
+     if(userSentiment < -3) {
+   userSentiment = -3
+     }
+     if(userSentiment > 3) {
+   userSentiment = 3
+     }
+
+     // Update image
+     document.getElementById('main-image').src = imgs[userSentiment];
+ }
+
+ function elizaReset() {
+     userSentiment = 0;
+     eliza.reset();
+     elizaLines.length = 0;
+     elizaStep();
+ }
+
+ function elizaStep() {
+     var f = document.forms.e_form;
+     var userinput = f.e_input.value;
+
+     //console.log(sentiment.analyze(userinput));
+     updateImage(sentiment.analyze(userinput)['score']);
+
+     if (eliza.quit) {
+   f.e_input.value = '';
+   if (confirm("This session is over.\nStart over?")) elizaReset();
+   f.e_input.focus();
+   return;
+     }
+     else if (userinput != '') {
+   var usr = 'YOU:   ' + userinput;
+   var rpl ='ELIZA: ' + eliza.transform(userinput);
+   elizaLines.push(usr);
+   elizaLines.push(rpl);
+   // display nicely
+   // (fit to textarea with last line free - reserved for extra line caused by word wrap)
+   var temp  = new Array();
+   var l = 0;
+   for (var i=elizaLines.length-1; i>=0; i--) {
+       l += 1 + Math.floor(elizaLines[i].length/displayCols);
+       if (l >= displayRows) break
+       else temp.push(elizaLines[i]);
+   }
+   elizaLines = temp.reverse();
+   f.e_display.value = elizaLines.join('\n');
+     }
+     else if (elizaLines.length == 0) {
+   // no input and no saved lines -> output initial
+   var initial = 'ELIZA: ' + eliza.getInitial();
+   elizaLines.push(initial);
+   f.e_display.value = initial + '\n';
+     }
+     f.e_input.value = '';
+     f.e_input.focus();
+ }
+
+</SCRIPT>
+
 </head>
 <body>
   <h1>Welcome To Chill Com</h1>
   <nav class="navbar">
   	<ul class="nav">
   		<li><a href="index.html">Home</a></li>
-  		<li><a href="nutrition.html">Mood</a></li>
-      <li><a href="grooming.html">Not Mood</a></li>
+  		<li><a href="info.html">Info</a></li>
+      <li><a href="chat.html">Chat</a></li>
   		<li><a href="training.html">Still Not Mood</a></li>
   		<li><a href="contact.html">Also Mood</a></li>
   	</ul>
