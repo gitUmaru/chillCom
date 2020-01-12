@@ -1,17 +1,44 @@
-{% extends "base.html" %} {% block content %}
-<center>
-  <body>
-    <div>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/WPni755-Krg"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-    Chill and Calming Music
-  </body>
-</div>
+{% extends "base.html" %} {% block content %} {% load static %}
+<body>
+  <center>
+    <i
+        ><p id="big_text" style="font-size: 64px;">
+          Chill and Calming Music
+        </p></i
+      >
+      <iframe
+        height="450"
+        width="700"
+        id="embed"
+        src="https://www.youtube.com/embed/WPni755-Krg"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+
+      <div style="display: inline-block;"> 
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+        <img width="5%" height="auto" src="{% static 'img/half.png' %}">
+      </div>
+      
+    </div>
+  </div>
 </center>
+</body>
 {% endblock content %}

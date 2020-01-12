@@ -61,3 +61,47 @@ body {
 .dropup:hover .dropbtn {
   background-color: #2980b9;
 }
+
+#youtube {
+  position: absolute;
+  width: 560px; /* you have to have a size or this method doesn't work */
+  height: 315px; /* think about making these max-width instead - might give you some more responsiveness */
+
+  position: absolute; /* positions out of the flow, but according to the nearest parent */
+  top: 0;
+  right: 0; /* confuse it i guess */
+  bottom: 0;
+  left: 0;
+  margin: auto; /* make em equal */
+}
+
+.grid-container {
+  display: grid;
+}
+
+.big_text {
+  grid-area: big_text;
+}
+
+.embed {
+  grid-area: embed;
+  width: 800px;
+  height: 600px;
+}
+.note {
+  grid-area: note;
+}
+
+.grid-container {
+  grid-template-areas:
+    "big_text big_text big_text big_text"
+    "note embed embed note"
+    "note note note note";
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
