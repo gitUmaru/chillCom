@@ -1,15 +1,6 @@
-<!--
-History page of my image analyzing application.
-Author:Kshithij Iyer
-Email: ahole@disroot.org
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>History</title>
-</head>
-<body bgcolor="gray">
+{% extends "base.html" %}
+
+{% block content %}
     <table border="10">
         <tr>
             <th>Image</th>
@@ -22,5 +13,4 @@ Email: ahole@disroot.org
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock content %}
