@@ -46,5 +46,17 @@ def getHistory(request):
     previous_searches=history.objects.all()
     return render(request,'history.html',{"data":previous_searches})
 
+def animation(request):
+    return render(request, 'animation.html')
+
+def main(request):
+    return render(request, 'main.html')
+
+def option(request):
+    return render(request, 'option.html')
+
 def chat(request):
     return render(request, 'chat.html')
+
+def welcome(request):
+    return render(request, 'welcome.html')

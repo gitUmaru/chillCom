@@ -6,4 +6,8 @@ urlpatterns = [
     url(r'^info/$', views.info, name='info'),#result url
     url(r'^history/$', views.getHistory, name='history'),#history url
     url(r'^chat/$', views.chat, name='chat'),
+    url(r'^animation/$', views.animation, name='animation'),
+    url(r'^main/$', views.main, name='main'),
+    url(r'^option/$', views.option, name='option'),
+    url(r'^welcome/$', views.welcome, name='welcome'),
 ]
