@@ -6,7 +6,7 @@ This project was a group effort, the product itself is a very soft means of anxi
 This was a submission for nwHacks, a prominent hackathon on the west coast, where we (the dev team) wanted to created a web app that contributed to social good. With social anxiety being a large issue, we thought that some means of mitigating stress and tension would be a great way to reach our goal.
  
 ## Screenshots
-![Homepage](#)
+Under Construction
 
 ## Tech/framework used
 Built with:
