@@ -31,12 +31,15 @@ Right-click https://dl.google.com/cloudsql/cloud_sql_proxy_x64.exe and select Sa
 ```cloud_sql_proxy.exe -instances="nwhacks20:us-central1:nwhacks"=tcp:3306```
 7. Create env
 ```
+pip install virtualenv
+pip install django-bootstrap4
 virtualenv env
 env\scripts\activate
 pip install -r requirements.txt
 ```
 8. Run Django
 ```
+pip install --upgrade google-cloud-vision
 python manage.py makemigrations
 python manage.py makemigrations polls
 python manage.py makemigrations auth
