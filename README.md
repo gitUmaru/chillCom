@@ -22,7 +22,7 @@ You will need a google cloud account with credits availible on it. As well as [i
 2. Clone the git repo
 ```git clone https://github.com/gitUmaru/chillCom```
 3. Change directory
-```cd python-docs-samples\appengine\standard_python37\django```
+```cd chillCom```
 4. Enable the Cloud SQL Admin API
 ```gcloud services enable sqladmin```
 5. Install the Cloud SQL Proxy
