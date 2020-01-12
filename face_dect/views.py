@@ -63,7 +63,3 @@ def welcome(request):
 
 def music_playlist(request):
     return render(request, 'music_playlist.html')
-<<<<<<< HEAD
-
-=======
->>>>>>> 2428b2626c2d97fe7c88b0b3032654be57a8ac3e
