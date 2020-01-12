@@ -59,7 +59,7 @@ Email: ahole@disroot.org
         }
         .custom-file-input:active::before {
              background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-        }
+        }/* XXX:  */
     </style>
 </head>
 <body bgcolor="gray">
@@ -75,11 +75,17 @@ Email: ahole@disroot.org
     <table>
     {% for label in labels %}
         <tr>
-            <td>{{label.description}}</td>
-            <td>{{label.score}}</td>
-            <td>{{label.locations}}</td>
+            <td>anger: {{label.anger_likelihood}}</td>
+            <td>joy: {{label.joy_likelihood}}</td>
+            <td>suprise: {{label.surprise_likelihood}}</td>
+
+            {% if label.anger_likelihood > 0 %}
+                  <h1>Thats pretty joy</h1>
+            {% endif %}
         </tr>
         {% endfor %}
+
+
     </table>
 </body>
 </html>

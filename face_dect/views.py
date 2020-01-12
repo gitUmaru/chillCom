@@ -25,13 +25,21 @@ def info(request):
     image = vision.types.Image(content=content)
     #labels = image.detect_labels()
     #label_data=""
-    response = vision_client.label_detection(image=image)
-    labels = response.label_annotations
-    label_data = " "
+    response = vision_client.face_detection(image=image)
+    labels = response.face_annotations
+    likelihood_name = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
+                       'LIKELY', 'VERY_LIKELY')
+    label_data = ''
     print(type(labels))
     for label in labels:
-        print(label_data)
-        label_data = label_data+label.description+"="+str(label.score)+","
+        print('anger: {}'.format(likelihood_name[label.anger_likelihood]))
+        print('joy: {}'.format(likelihood_name[label.joy_likelihood]))
+        print('surprise: {}'.format(likelihood_name[label.surprise_likelihood]))
+
+        vertices = (['({},{})'.format(vertex.x, vertex.y)
+                    for vertex in label.bounding_poly.vertices])
+
+        print('face bounds: {}'.format(','.join(vertices)))
     record=history(url=file_name,data=label_data)
     record.save()
     return render(request,'results.html',{"labels":labels,'image':file_name})
