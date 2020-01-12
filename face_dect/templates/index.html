@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% block content %}
+{% load static %}
 <h1>Welcome to Chill Com</h1>
 <h2>This analyzes your face to determine the current mood.</h2>
 <form
@@ -6,20 +7,13 @@
   method="post"
   class="form"
   enctype="multipart/form-data"
->
+></form>
+<form action='/analyze/info/' method='post' class="form" enctype="multipart/form-data">
   {% csrf_token %}
-  <input
-    type="file"
-    name="pic"
-    accept="image/*"
-    id="pic"
-    class="custom-file-input"
-  />
-  <input type="submit" class="button" />
+  <input type='file' name='pic' accept='image/*' id='pic' class="custom-file-input">
+  <input type='submit' class="button">
 </form>
-<button type="button" onclick="location.href='/analyze/history'" class="button">
-  History
-</button>
+<button type="button" onclick="location.href='/analyze/history'" class="button">History</button>
 <div id="container">
   <video autoplay="true" id="videoElement"></video>
 </div>
@@ -28,278 +22,306 @@
     <img style="padding-top: 70px;" id="photo" height="50" width="20" />
   </div>
 </canvas>
+<audio controls autoplay id="bgm" style="display:none"><source src=""></audio>
+<body>
 <div>
   <button id="startbutton">Take a photo</button>
+  <div class="dropup">
+    <button class="dropbtn">Music Select</button>
+    <div class="dropup-content">
+      <a onclick="black()">Black Noise</a>
+      <a onclick="brown()">Brown Noise</a>
+      <a onclick="white()">White Noise</a>
+      <a onclick="no_music()">No Music</a>
+    </div>
+  </div>
 </div>
-<script>
-  var hidden_canvas = document.querySelector("canvas");
-  var video = document.querySelector("#videoElement");
-  var takepicture_button = document.getElementById("startbutton");
-  takepicture_button.addEventListener("click", takepicture);
+</body>
+    <script>
+      function brown(){
+        document.getElementById("bgm").src = "{% static 'music/brown.ogg' %}";
+      }function black(){
+        document.getElementById("bgm").src = "{% static 'music/black.ogg' %}";
+      }
+      function white(){
+        document.getElementById("bgm").src = "{% static 'music/white.ogg' %}";
+      }
+      function no_music(){
+        document.getElementById("bgm").src = "";
+      }
 
-  if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then(function(stream) {
-        video.srcObject = stream;
-      })
-      .catch(function(err0r) {
-        console.log("Something went wrong!");
-      });
-  }
 
-  function takepicture() {
-    (video = document.querySelector("#videoElement")),
-      (image = document.getElementById("dl-btn")),
-      (width = video.videoWidth / 3),
-      (height = video.videoHeight / 3),
-      (context = hidden_canvas.getContext("2d"));
-    hidden_canvas.width = width;
-    hidden_canvas.height = height;
-    context.drawImage(video, 0, 0, width, height);
-    var c = document.querySelector("canvas");
-    var d = c.toDataURL("image/png");
-    saveBase64AsFile(d, "snapshot");
-  }
 
-  function saveBase64AsFile(base64, fileName) {
-    var link = document.createElement("a");
-    link.setAttribute("href", base64);
-    link.setAttribute(
-      "download",
-      fileName +
-        animals[Math.floor(Math.random() * animals.length)] +
-        (Math.floor(Math.random() * 9) + 1).toString()
-    );
-    link.click();
-  }
+      var hidden_canvas = document.querySelector("canvas");
+      var video = document.querySelector("#videoElement");
+      var takepicture_button = document.getElementById("startbutton");
+      takepicture_button.addEventListener("click", takepicture);
 
-  const animals = [
-    "Aardvark",
-    "Albatross",
-    "Alligator",
-    "Alpaca",
-    "Ant",
-    "Anteater",
-    "Antelope",
-    "Ape",
-    "Armadillo",
-    "Donkey",
-    "Baboon",
-    "Badger",
-    "Barracuda",
-    "Bat",
-    "Bear",
-    "Beaver",
-    "Bee",
-    "Bison",
-    "Boar",
-    "Buffalo",
-    "Butterfly",
-    "Camel",
-    "Capybara",
-    "Caribou",
-    "Cassowary",
-    "Cat",
-    "Caterpillar",
-    "Cattle",
-    "Chamois",
-    "Cheetah",
-    "Chicken",
-    "Chimpanzee",
-    "Chinchilla",
-    "Chough",
-    "Clam",
-    "Cobra",
-    "Cockroach",
-    "Cod",
-    "Cormorant",
-    "Coyote",
-    "Crab",
-    "Crane",
-    "Crocodile",
-    "Crow",
-    "Curlew",
-    "Deer",
-    "Dinosaur",
-    "Dog",
-    "Dogfish",
-    "Dolphin",
-    "Dotterel",
-    "Dove",
-    "Dragonfly",
-    "Duck",
-    "Dugong",
-    "Dunlin",
-    "Eagle",
-    "Echidna",
-    "Eel",
-    "Eland",
-    "Elephant",
-    "Elk",
-    "Emu",
-    "Falcon",
-    "Ferret",
-    "Finch",
-    "Fish",
-    "Flamingo",
-    "Fly",
-    "Fox",
-    "Frog",
-    "Gaur",
-    "Gazelle",
-    "Gerbil",
-    "Giraffe",
-    "Gnat",
-    "Gnu",
-    "Goat",
-    "Goldfinch",
-    "Goldfish",
-    "Goose",
-    "Gorilla",
-    "Goshawk",
-    "Grasshopper",
-    "Grouse",
-    "Guanaco",
-    "Gull",
-    "Hamster",
-    "Hare",
-    "Hawk",
-    "Hedgehog",
-    "Heron",
-    "Herring",
-    "Hippopotamus",
-    "Hornet",
-    "Horse",
-    "Human",
-    "Hummingbird",
-    "Hyena",
-    "Ibex",
-    "Ibis",
-    "Jackal",
-    "Jaguar",
-    "Jay",
-    "Jellyfish",
-    "Kangaroo",
-    "Kingfisher",
-    "Koala",
-    "Kookabura",
-    "Kouprey",
-    "Kudu",
-    "Lapwing",
-    "Lark",
-    "Lemur",
-    "Leopard",
-    "Lion",
-    "Llama",
-    "Lobster",
-    "Locust",
-    "Loris",
-    "Louse",
-    "Lyrebird",
-    "Magpie",
-    "Mallard",
-    "Manatee",
-    "Mandrill",
-    "Mantis",
-    "Marten",
-    "Meerkat",
-    "Mink",
-    "Mole",
-    "Mongoose",
-    "Monkey",
-    "Moose",
-    "Mosquito",
-    "Mouse",
-    "Mule",
-    "Narwhal",
-    "Newt",
-    "Nightingale",
-    "Octopus",
-    "Okapi",
-    "Opossum",
-    "Oryx",
-    "Ostrich",
-    "Otter",
-    "Owl",
-    "Oyster",
-    "Panther",
-    "Parrot",
-    "Partridge",
-    "Peafowl",
-    "Pelican",
-    "Penguin",
-    "Pheasant",
-    "Pig",
-    "Pigeon",
-    "Pony",
-    "Porcupine",
-    "Porpoise",
-    "Quail",
-    "Quelea",
-    "Quetzal",
-    "Rabbit",
-    "Raccoon",
-    "Rail",
-    "Ram",
-    "Rat",
-    "Raven",
-    "Red deer",
-    "Red panda",
-    "Reindeer",
-    "Rhinoceros",
-    "Rook",
-    "Salamander",
-    "Salmon",
-    "Sand Dollar",
-    "Sandpiper",
-    "Sardine",
-    "Scorpion",
-    "Seahorse",
-    "Seal",
-    "Shark",
-    "Sheep",
-    "Shrew",
-    "Skunk",
-    "Snail",
-    "Snake",
-    "Sparrow",
-    "Spider",
-    "Spoonbill",
-    "Squid",
-    "Squirrel",
-    "Starling",
-    "Stingray",
-    "Stinkbug",
-    "Stork",
-    "Swallow",
-    "Swan",
-    "Tapir",
-    "Tarsier",
-    "Termite",
-    "Tiger",
-    "Toad",
-    "Trout",
-    "Turkey",
-    "Turtle",
-    "Viper",
-    "Vulture",
-    "Wallaby",
-    "Walrus",
-    "Wasp",
-    "Weasel",
-    "Whale",
-    "Wildcat",
-    "Wolf",
-    "Wolverine",
-    "Wombat",
-    "Woodcock",
-    "Woodpecker",
-    "Worm",
-    "Wren",
-    "Yak",
-    "Zebra"
-  ];
-</script>
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function(stream) {
+            video.srcObject = stream;
+          })
+          .catch(function(err0r) {
+            console.log("Something went wrong!");
+          });
+      }
 
-{% endblock content %}
+      function takepicture() {
+        (video = document.querySelector("#videoElement")),
+          (image = document.getElementById("dl-btn")),
+          (width = video.videoWidth / 3),
+          (height = video.videoHeight / 3),
+          (context = hidden_canvas.getContext("2d"));
+        hidden_canvas.width = width;
+        hidden_canvas.height = height;
+        context.drawImage(video, 0, 0, width, height);
+        var c = document.querySelector("canvas");
+        var d = c.toDataURL("image/png");
+        saveBase64AsFile(d, "snapshot");
+      }
+
+      function saveBase64AsFile(base64, fileName) {
+        var link = document.createElement("a");
+        link.setAttribute("href", base64);
+        link.setAttribute(
+          "download",
+          fileName +
+            animals[Math.floor(Math.random() * animals.length)] +
+            (Math.floor(Math.random() * 9) + 1).toString()
+        );
+        link.click();
+      }
+
+      const animals = [
+        "Aardvark",
+        "Albatross",
+        "Alligator",
+        "Alpaca",
+        "Ant",
+        "Anteater",
+        "Antelope",
+        "Ape",
+        "Armadillo",
+        "Donkey",
+        "Baboon",
+        "Badger",
+        "Barracuda",
+        "Bat",
+        "Bear",
+        "Beaver",
+        "Bee",
+        "Bison",
+        "Boar",
+        "Buffalo",
+        "Butterfly",
+        "Camel",
+        "Capybara",
+        "Caribou",
+        "Cassowary",
+        "Cat",
+        "Caterpillar",
+        "Cattle",
+        "Chamois",
+        "Cheetah",
+        "Chicken",
+        "Chimpanzee",
+        "Chinchilla",
+        "Chough",
+        "Clam",
+        "Cobra",
+        "Cockroach",
+        "Cod",
+        "Cormorant",
+        "Coyote",
+        "Crab",
+        "Crane",
+        "Crocodile",
+        "Crow",
+        "Curlew",
+        "Deer",
+        "Dinosaur",
+        "Dog",
+        "Dogfish",
+        "Dolphin",
+        "Dotterel",
+        "Dove",
+        "Dragonfly",
+        "Duck",
+        "Dugong",
+        "Dunlin",
+        "Eagle",
+        "Echidna",
+        "Eel",
+        "Eland",
+        "Elephant",
+        "Elk",
+        "Emu",
+        "Falcon",
+        "Ferret",
+        "Finch",
+        "Fish",
+        "Flamingo",
+        "Fly",
+        "Fox",
+        "Frog",
+        "Gaur",
+        "Gazelle",
+        "Gerbil",
+        "Giraffe",
+        "Gnat",
+        "Gnu",
+        "Goat",
+        "Goldfinch",
+        "Goldfish",
+        "Goose",
+        "Gorilla",
+        "Goshawk",
+        "Grasshopper",
+        "Grouse",
+        "Guanaco",
+        "Gull",
+        "Hamster",
+        "Hare",
+        "Hawk",
+        "Hedgehog",
+        "Heron",
+        "Herring",
+        "Hippopotamus",
+        "Hornet",
+        "Horse",
+        "Human",
+        "Hummingbird",
+        "Hyena",
+        "Ibex",
+        "Ibis",
+        "Jackal",
+        "Jaguar",
+        "Jay",
+        "Jellyfish",
+        "Kangaroo",
+        "Kingfisher",
+        "Koala",
+        "Kookabura",
+        "Kouprey",
+        "Kudu",
+        "Lapwing",
+        "Lark",
+        "Lemur",
+        "Leopard",
+        "Lion",
+        "Llama",
+        "Lobster",
+        "Locust",
+        "Loris",
+        "Louse",
+        "Lyrebird",
+        "Magpie",
+        "Mallard",
+        "Manatee",
+        "Mandrill",
+        "Mantis",
+        "Marten",
+        "Meerkat",
+        "Mink",
+        "Mole",
+        "Mongoose",
+        "Monkey",
+        "Moose",
+        "Mosquito",
+        "Mouse",
+        "Mule",
+        "Narwhal",
+        "Newt",
+        "Nightingale",
+        "Octopus",
+        "Okapi",
+        "Opossum",
+        "Oryx",
+        "Ostrich",
+        "Otter",
+        "Owl",
+        "Oyster",
+        "Panther",
+        "Parrot",
+        "Partridge",
+        "Peafowl",
+        "Pelican",
+        "Penguin",
+        "Pheasant",
+        "Pig",
+        "Pigeon",
+        "Pony",
+        "Porcupine",
+        "Porpoise",
+        "Quail",
+        "Quelea",
+        "Quetzal",
+        "Rabbit",
+        "Raccoon",
+        "Rail",
+        "Ram",
+        "Rat",
+        "Raven",
+        "Red deer",
+        "Red panda",
+        "Reindeer",
+        "Rhinoceros",
+        "Rook",
+        "Salamander",
+        "Salmon",
+        "Sand Dollar",
+        "Sandpiper",
+        "Sardine",
+        "Scorpion",
+        "Seahorse",
+        "Seal",
+        "Shark",
+        "Sheep",
+        "Shrew",
+        "Skunk",
+        "Snail",
+        "Snake",
+        "Sparrow",
+        "Spider",
+        "Spoonbill",
+        "Squid",
+        "Squirrel",
+        "Starling",
+        "Stingray",
+        "Stinkbug",
+        "Stork",
+        "Swallow",
+        "Swan",
+        "Tapir",
+        "Tarsier",
+        "Termite",
+        "Tiger",
+        "Toad",
+        "Trout",
+        "Turkey",
+        "Turtle",
+        "Viper",
+        "Vulture",
+        "Wallaby",
+        "Walrus",
+        "Wasp",
+        "Weasel",
+        "Whale",
+        "Wildcat",
+        "Wolf",
+        "Wolverine",
+        "Wombat",
+        "Woodcock",
+        "Woodpecker",
+        "Worm",
+        "Wren",
+        "Yak",
+        "Zebra"
+      ];
+    </script>
+
+    {% endblock content %}
+  </div>
+</div>

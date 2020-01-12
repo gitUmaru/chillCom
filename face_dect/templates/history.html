@@ -1,16 +1,17 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<table border="10">
+  <tr>
+    <th>Image</th>
+    <th>Vision API results</th>
+  </tr>
+  {% for elements in data %}
+  <tr>
+    <td>
+      <img src="./{{elements.url}}" style="width:128px;height:128px;" />
+    </td>
+    <td>{{elements.data}}</td>
+  </tr>
+  {% endfor %}
+</table>
 
-{% block content %}
-    <table border="10">
-        <tr>
-            <th>Image</th>
-            <th>Vision API results</th>
-        </tr>
-        {% for elements in data %}
-        <tr>
-            <td><img src="/{{elements.url}}" style='width:128px;height:128px;'></td>
-            <td>{{elements.data}}</td>
-        </tr>
-        {% endfor %}
-    </table>
 {% endblock content %}
