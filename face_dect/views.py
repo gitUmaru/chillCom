@@ -6,9 +6,6 @@ from django.shortcuts import render
 from google.cloud import vision
 from face_dect.models import history
 
-
-var = 'alksdalskdjlaskd'
-
 # Create your views here.
 def index(request):
     return render(request,'index.html')

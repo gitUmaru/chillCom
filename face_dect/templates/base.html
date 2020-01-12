@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>c h i l l   c o m</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static "js/script.js" %}"></script>
+
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+
+</head>
+<body>
+  <h1>Welcome To Chill Com</h1>
+  <nav class="navbar">
+  	<ul class="nav">
+  		<li><a href="index.html">Home</a></li>
+  		<li><a href="nutrition.html">Mood</a></li>
+      <li><a href="grooming.html">Not Mood</a></li>
+  		<li><a href="training.html">Still Not Mood</a></li>
+  		<li><a href="contact.html">Also Mood</a></li>
+  	</ul>
+  </nav>
+
+    {% block content %}{% endblock content %}
+</body>
+</html>
