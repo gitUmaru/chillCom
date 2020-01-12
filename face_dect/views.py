@@ -45,3 +45,6 @@ def getHistory(request):
     #Getting history from db.
     previous_searches=history.objects.all()
     return render(request,'history.html',{"data":previous_searches})
+
+def chat(request):
+    return render(request, 'chat.html')

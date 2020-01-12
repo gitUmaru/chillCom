@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<BODY onload="window.setTimeout('elizaReset()',100)">
+	<!-- github corner -->
+	<CENTER>
+	    <H3>Eliza+</H3>
+	    <img id="main-image" src="img/default-01.png" width=300px height=300px>
+	    <TABLE>
+		<FORM NAME="e_form" onsubmit="elizaStep();return false">
+		    <TR>
+			<TD COLSPAN="2">
+			    <TEXTAREA class="form-control" NAME="e_display" COLS="60" ROWS="20"></TEXTAREA>
+			</TD>
+		    </TR>
+		    <TR VALIGN="middle">
+			<TD>
+			    <INPUT class="form-control" TYPE="text" NAME="e_input" SIZE="43">
+			</TD>
+			<TD ALIGN="right">
+			    <INPUT class="btn btn-default" TYPE="submit" VALUE="Talk">
+			    <INPUT class="btn btn-default" TYPE="reset" VALUE="Reset" onClick="window.setTimeout('elizaReset()',100)">
+			</TD>
+		    </TR>
+		</FORM>
+	    </TABLE>
+	</CENTER>
+
+
+    </BODY>
+{% endblock content %}
