@@ -58,12 +58,9 @@ def option(request):
 def chat(request):
     return render(request, 'chat.html')
 
-<<<<<<< HEAD
 def welcome(request):
     return render(request, 'welcome.html')
-=======
 
 def music_playlist(request):
     return render(request, 'music_playlist.html')
 
->>>>>>> dd0eaca4d1ca1ba3eb5391f0d8aa283881f9c72c

@@ -1,35 +1,16 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>chill calm</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
-    <script src="{% static "js/script.js" %}"></script>
-
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
-    <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
-
-</head>
-<body id ="welcomeBody">
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: orange;!important; font-size: 18pt;">
-    <a class="navbar-brand text-light" href="main.html">
-      <img src="ellie.png" width="70" height="70" class="d-inline-block align-top" alt="">
-      <p id = "name"  class="d-inline-block align-top">Chill Calm</p>
-    </a>
-  </nav>
+{% block content %}
+<body id="mainBody">
+    
   <div id="midbar">
     <p>Welcome! <br>Ready to start?</p>
     <div id=logIn>
-      <a id="logInButton" href='main.html'>Let's Begin</a>
+      <a id="logInButton" href= "/analyze">Let's Begin</a>
     </div>
   </div>
 
 
-    {% block content %}{% endblock content %}
+
 </body>
-</html>
+    {% endblock content %}

@@ -22,5 +22,5 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('analyze/', include('face_dect.urls')),
     path('admin/', admin.site.urls),
-    url(r'^$', RedirectView.as_view(url='analyze/')),
+    url(r'^$', RedirectView.as_view(url='analyze/welcome/')),
 ]

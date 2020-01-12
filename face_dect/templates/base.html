@@ -6,13 +6,14 @@
     <meta charset="UTF-8">
     <title>c h i l l   c a l m</title>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
-    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style type="text/css">
+  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 <style>
  .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
@@ -119,17 +120,18 @@
 
 </SCRIPT>
 
+ <script src="https://kit.fontawesome.com/68565aa008.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
-<body>
-  <h1>Welcome To Chill Calm</h1>
-  <nav class="navbar">
-  	<ul class="nav">
-  		<li><a href="analyze/">Home</a></li>
-  		<li><a href="info/">Results</a></li>
-      <li><a href="chat/">Chat</a></li>
-  		<li><a href="history/">History</a></li>
-  		<li><a href="contact.html">Also Mood</a></li>
-  	</ul>
+
+<body id = "mainBody">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: orange;!important; font-size: 18pt;">
+    <a class="navbar-brand text-light" href="main.html">
+      <img src="{% static 'img/ellie.png' %}" width="70" height="70" class="d-inline-block align-top" alt="">
+      <p id = "name"  class="d-inline-block align-top">Chill Calm</p>
+    </a>
   </nav>
 
     {% block content %}{% endblock content %}
