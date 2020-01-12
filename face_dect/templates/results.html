@@ -27,7 +27,10 @@
     <td>Joy: {{label.joy_likelihood}}&nbsp;</td>
     <td>Suprise: {{label.surprise_likelihood}}&nbsp;</td>
 
-    {% if label.anger_likelihood > 0 %}
+    {% if label.anger_likelihood > label.joy_likelihood %}
+    <h1>Face {{forloop.counter}}: That's not pretty joy</h1>
+    {% endif %}
+    {% if label.anger_likelihood < label.joy_likelihood %}
     <h1>Face {{forloop.counter}}: That's pretty joy</h1>
     {% endif %}
   </tr>
